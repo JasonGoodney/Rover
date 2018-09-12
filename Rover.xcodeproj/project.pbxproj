@@ -12,6 +12,10 @@
 		D7D705B8214954DD007C3C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B7214954DD007C3C57 /* Assets.xcassets */; };
 		D7D705BB214954DD007C3C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B9214954DD007C3C57 /* LaunchScreen.storyboard */; };
 		D7D705BE214954DD007C3C57 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705BD214954DD007C3C57 /* main.m */; };
+		D7D705CF214955DA007C3C57 /* JTGRover.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705CE214955DA007C3C57 /* JTGRover.m */; };
+		D7D705D221495BED007C3C57 /* JTGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705D121495BED007C3C57 /* JTGPhoto.m */; };
+		D7D705D521495E0B007C3C57 /* JTGSolDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705D421495E0B007C3C57 /* JTGSolDescription.m */; };
+		D7D7063B2149BC0F007C3C57 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7D7063A2149BC0F007C3C57 /* APIKeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,13 @@
 		D7D705BA214954DD007C3C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7D705BC214954DD007C3C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7D705BD214954DD007C3C57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D7D705CD214955DA007C3C57 /* JTGRover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGRover.h; sourceTree = "<group>"; };
+		D7D705CE214955DA007C3C57 /* JTGRover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGRover.m; sourceTree = "<group>"; };
+		D7D705D021495BED007C3C57 /* JTGPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGPhoto.h; sourceTree = "<group>"; };
+		D7D705D121495BED007C3C57 /* JTGPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGPhoto.m; sourceTree = "<group>"; };
+		D7D705D321495E0B007C3C57 /* JTGSolDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGSolDescription.h; sourceTree = "<group>"; };
+		D7D705D421495E0B007C3C57 /* JTGSolDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGSolDescription.m; sourceTree = "<group>"; };
+		D7D7063A2149BC0F007C3C57 /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +68,7 @@
 			children = (
 				D7D705CB214954FC007C3C57 /* UI */,
 				D7D705C6214954FC007C3C57 /* Model */,
-				D7D705CC214954FC007C3C57 /* ModelController */,
+				D7D705CC214954FC007C3C57 /* Client */,
 				D7D705C4214954FC007C3C57 /* View */,
 				D7D705C5214954FC007C3C57 /* ViewController */,
 				D7D705CA214954FC007C3C57 /* Resources */,
@@ -82,6 +93,12 @@
 		D7D705C6214954FC007C3C57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D7D705CD214955DA007C3C57 /* JTGRover.h */,
+				D7D705CE214955DA007C3C57 /* JTGRover.m */,
+				D7D705D021495BED007C3C57 /* JTGPhoto.h */,
+				D7D705D121495BED007C3C57 /* JTGPhoto.m */,
+				D7D705D321495E0B007C3C57 /* JTGSolDescription.h */,
+				D7D705D421495E0B007C3C57 /* JTGSolDescription.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +111,7 @@
 				D7D705B7214954DD007C3C57 /* Assets.xcassets */,
 				D7D705B9214954DD007C3C57 /* LaunchScreen.storyboard */,
 				D7D705BC214954DD007C3C57 /* Info.plist */,
+				D7D7063A2149BC0F007C3C57 /* APIKeys.plist */,
 				D7D705BD214954DD007C3C57 /* main.m */,
 			);
 			path = Resources;
@@ -107,11 +125,11 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D7D705CC214954FC007C3C57 /* ModelController */ = {
+		D7D705CC214954FC007C3C57 /* Client */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ModelController;
+			path = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +158,7 @@
 		D7D705A3214954DC007C3C57 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = JTG;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jason Goodney";
 				TargetAttributes = {
@@ -172,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7D705BB214954DD007C3C57 /* LaunchScreen.storyboard in Resources */,
+				D7D7063B2149BC0F007C3C57 /* APIKeys.plist in Resources */,
 				D7D705B8214954DD007C3C57 /* Assets.xcassets in Resources */,
 				D7D705B6214954DC007C3C57 /* Main.storyboard in Resources */,
 			);
@@ -184,6 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D705D221495BED007C3C57 /* JTGPhoto.m in Sources */,
+				D7D705D521495E0B007C3C57 /* JTGSolDescription.m in Sources */,
+				D7D705CF214955DA007C3C57 /* JTGRover.m in Sources */,
 				D7D705BE214954DD007C3C57 /* main.m in Sources */,
 				D7D705B0214954DC007C3C57 /* AppDelegate.m in Sources */,
 			);
@@ -327,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2R548H5LT;
-				INFOPLIST_FILE = Rover/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Rover/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,7 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2R548H5LT;
-				INFOPLIST_FILE = Rover/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Rover/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
