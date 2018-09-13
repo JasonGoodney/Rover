@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JTGMarsRoverClient.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    JTGMarsRoverClient *client = [[JTGMarsRoverClient alloc] init];
+    
+    [client fetchAllMarsRoversWithCompletion:^(NSArray<NSString *> * _Nullable roverNames, NSError * _Nullable error) {
+        
+        NSLog(@"%@", roverNames);
+    }];
+    
     return YES;
 }
 

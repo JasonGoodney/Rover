@@ -16,6 +16,7 @@
 		D7D705D221495BED007C3C57 /* JTGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705D121495BED007C3C57 /* JTGPhoto.m */; };
 		D7D705D521495E0B007C3C57 /* JTGSolDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705D421495E0B007C3C57 /* JTGSolDescription.m */; };
 		D7D7063B2149BC0F007C3C57 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7D7063A2149BC0F007C3C57 /* APIKeys.plist */; };
+		D7D7063E2149BE25007C3C57 /* JTGMarsRoverClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D7063D2149BE25007C3C57 /* JTGMarsRoverClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		D7D705D321495E0B007C3C57 /* JTGSolDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGSolDescription.h; sourceTree = "<group>"; };
 		D7D705D421495E0B007C3C57 /* JTGSolDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGSolDescription.m; sourceTree = "<group>"; };
 		D7D7063A2149BC0F007C3C57 /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		D7D7063C2149BE25007C3C57 /* JTGMarsRoverClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGMarsRoverClient.h; sourceTree = "<group>"; };
+		D7D7063D2149BE25007C3C57 /* JTGMarsRoverClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGMarsRoverClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 		D7D705CC214954FC007C3C57 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				D7D7063C2149BE25007C3C57 /* JTGMarsRoverClient.h */,
+				D7D7063D2149BE25007C3C57 /* JTGMarsRoverClient.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				D7D705D521495E0B007C3C57 /* JTGSolDescription.m in Sources */,
 				D7D705CF214955DA007C3C57 /* JTGRover.m in Sources */,
 				D7D705BE214954DD007C3C57 /* main.m in Sources */,
+				D7D7063E2149BE25007C3C57 /* JTGMarsRoverClient.m in Sources */,
 				D7D705B0214954DC007C3C57 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
