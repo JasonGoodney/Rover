@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JTGRover.h"
+#import "JTGMarsRoverClient.h"
+#import "JTGPhoto.h"
+#import "JTGSolDescription.h"
+#import "JTGPhotoCollectionViewCell.h"
 
 @interface JTGPhotosCollectionViewController : UICollectionViewController
+
+@property (nonatomic) JTGRover *rover;
+@property (nonatomic, copy) NSNumber *sol;
+@property (nonatomic, copy) JTGSolDescription *solDescription;
 
 @end

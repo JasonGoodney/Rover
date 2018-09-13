@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JTGRover.h"
 #import "JTGMarsRoverClient.h"
+#import "JTGSolsTableViewController.h"
+#import "JTGSolDescription.h"
 
 @interface JTGRoversTableViewController : UITableViewController
 

@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly, copy) NSNumber *sol;
 @property (nonatomic, readonly, copy) NSArray<NSString *> *cameras;
-@property (nonatomic, readonly, copy) NSNumber *numberOfPhotos; // [photos count]?
+@property (nonatomic, readonly, copy) NSNumber *numberOfPhotos;
 
 - (instancetype) initWithDictionary:(NSDictionary<NSString *, id> *)solDictionary;
 

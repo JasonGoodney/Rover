@@ -114,8 +114,10 @@
         NSDictionary *topLevelDictionary = [NSJSONSerialization JSONObjectWithData:data options:2 error:&err];
         
         NSDictionary *roverDictionary = topLevelDictionary[@"photo_manifest"];
-        JTGRover *rover = [[JTGRover alloc] initWithDictionary:roverDictionary];
         
+        JTGRover *rover = [[JTGRover alloc] initWithDictionary:roverDictionary];
+        rover.solDescriptions = [self solDescriptionFromDicionary:roverDictionary];
+                
         block(rover, nil);
     }] resume];
 }
@@ -172,6 +174,18 @@
         block(data, nil);
         
     }] resume];
+}
+
+- (NSArray *) solDescriptionFromDicionary:(NSDictionary *)roverDictionary {
+    NSMutableArray *solDescriptions = [[NSMutableArray alloc] init];
+    NSDictionary<NSString *, id> *photos = roverDictionary[@"photos"];
+    
+    for (NSDictionary *photo in photos) {
+        JTGSolDescription *solDescription = [[JTGSolDescription alloc] initWithDictionary:photo];
+        [solDescriptions addObject:solDescription];
+    }
+    
+    return solDescriptions;
 }
 
 @end

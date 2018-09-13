@@ -10,4 +10,6 @@
 
 @interface JTGPhotoCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
 @end

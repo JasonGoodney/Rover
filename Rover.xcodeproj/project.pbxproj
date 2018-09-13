@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7A58498214AD32700323F09 /* JTGPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A58497214AD32700323F09 /* JTGPhotoCollectionViewCell.m */; };
 		D7D705B0214954DC007C3C57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705AF214954DC007C3C57 /* AppDelegate.m */; };
 		D7D705B6214954DC007C3C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B4214954DC007C3C57 /* Main.storyboard */; };
 		D7D705B8214954DD007C3C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B7214954DD007C3C57 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7A58496214AD32700323F09 /* JTGPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		D7A58497214AD32700323F09 /* JTGPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		D7D705AB214954DC007C3C57 /* Rover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7D705AE214954DC007C3C57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7D705AF214954DC007C3C57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 		D7D705C4214954FC007C3C57 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D7A58496214AD32700323F09 /* JTGPhotoCollectionViewCell.h */,
+				D7A58497214AD32700323F09 /* JTGPhotoCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				D7D705D221495BED007C3C57 /* JTGPhoto.m in Sources */,
 				D7D70641214A0997007C3C57 /* JTGRoversTableViewController.m in Sources */,
 				D7D70647214A0A68007C3C57 /* JTGPhotosCollectionViewController.m in Sources */,
+				D7A58498214AD32700323F09 /* JTGPhotoCollectionViewCell.m in Sources */,
 				D7D705D521495E0B007C3C57 /* JTGSolDescription.m in Sources */,
 				D7D705CF214955DA007C3C57 /* JTGRover.m in Sources */,
 				D7D70644214A0A0F007C3C57 /* JTGSolsTableViewController.m in Sources */,

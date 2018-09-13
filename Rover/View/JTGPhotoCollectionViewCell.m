@@ -10,4 +10,8 @@
 
 @implementation JTGPhotoCollectionViewCell
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+}
+
 @end

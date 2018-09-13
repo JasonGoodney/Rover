@@ -15,7 +15,8 @@
     NSNumber *numberOfPhotos = solDictionary[@"total_photos"];
     NSArray<NSString *> *cameras = solDictionary[@"cameras"];
     
-    if (![sol isKindOfClass:[NSNumber class]] || ![numberOfPhotos isKindOfClass:[NSNumber class]] ||
+    if (![sol isKindOfClass:[NSNumber class]] ||
+        ![numberOfPhotos isKindOfClass:[NSNumber class]] ||
         ![cameras isKindOfClass:[NSArray class]]) {
         
         return nil;

@@ -9,6 +9,7 @@
 // api_key = bZmxxthFzctlbjVgj6Ge8bJOocsUyYIcicXwXXgG
 
 #import <Foundation/Foundation.h>
+#import "JTGSolDescription.h"
 
 typedef NS_ENUM(NSInteger, JTGRoverStatus) {
     JTGRoverStatusActive,
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSInteger, JTGRoverStatus) {
 @property (nonatomic, readonly, copy) NSNumber *maxSol;
 @property (nonatomic, readonly, copy) NSString *maxDate;
 @property (nonatomic, readonly, copy) NSNumber *totalPhotos;
+@property (nonatomic) NSArray<JTGSolDescription *> *solDescriptions;
 @property (nonatomic) JTGRoverStatus roverStatus;
 
 
