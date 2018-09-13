@@ -21,9 +21,11 @@
     
     JTGMarsRoverClient *client = [[JTGMarsRoverClient alloc] init];
     
-    [client fetchAllMarsRoversWithCompletion:^(NSArray<NSString *> * _Nullable roverNames, NSError * _Nullable error) {
-        
-        NSLog(@"%@", roverNames);
+    [client fetchMissionManifestForRoverNamed:@"Curiosity" withBlock:^(JTGRover * _Nullable rover, NSError * _Nullable error) {
+        NSLog(@"%@", rover);
+        [client fetchPhotosFromRover:rover sol:[NSNumber numberWithInteger:1000] withBlock:^(NSArray<UIImage *> * _Nullable image, NSError * _Nullable error) {
+            
+        }];
     }];
     
     return YES;

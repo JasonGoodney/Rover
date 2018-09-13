@@ -41,15 +41,20 @@
 }
 
 // Returns manifest for rover with roverName
-+ (NSURL *) URLForInforForRover:(NSString *)roverName {
-    NSURL *roverManifestURL = [[[self baseURL] URLByAppendingPathComponent:@"manifests"] URLByAppendingPathComponent:roverName];
++ (NSURL *) URLForInfoForRover:(NSString *)roverName {
+    NSURL *roverManifestURL = [[[self baseURL] URLByAppendingPathComponent:@"manifests"] URLByAppendingPathComponent:[roverName lowercaseString]];
     NSURLComponents *components = [NSURLComponents componentsWithURL:roverManifestURL resolvingAgainstBaseURL:YES];
     components.queryItems = @[[JTGMarsRoverClient apiKeyQueryItem]];
     return components.URL;
 }
 
+// https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
 + (NSURL *) URLForPhotosFromRover:(NSString *)roverName sol:(NSNumber *)sol {
-    NSURL *roverURL = [[[self baseURL] URLByAppendingPathComponent:@"rovers"] URLByAppendingPathComponent:roverName];
+    NSURL *roverURL = [[[[self baseURL]
+                         URLByAppendingPathComponent:@"rovers"]
+                         URLByAppendingPathComponent:[roverName lowercaseString]]
+                         URLByAppendingPathComponent:@"photos"];
+    
     NSString *solString = [NSString stringWithFormat:@"%@", sol];
     NSURLComponents *components = [NSURLComponents componentsWithURL:roverURL resolvingAgainstBaseURL:YES];
     NSURLQueryItem *solQueryItem = [NSURLQueryItem queryItemWithName:@"sol" value:solString];
@@ -60,8 +65,8 @@
 }
 
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> * _Nullable, NSError * _Nullable))block {
-    
-    [[[NSURLSession sharedSession] dataTaskWithURL:[JTGMarsRoverClient URLForAllRovers] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURL *url = [JTGMarsRoverClient URLForAllRovers];
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"Error: %@ %@", error, error.localizedDescription);
@@ -76,7 +81,6 @@
         }
         
         NSError *err = nil;
-        
         NSDictionary *topLevelDictionary = [NSJSONSerialization JSONObjectWithData:data options:2 error:&err];
         
         NSArray *roversArray = topLevelDictionary[@"rovers"];
@@ -91,9 +95,61 @@
     }] resume];
 }
 
-- (void)fetchMissionManifestForRoverNamed:(NSString *)name withBlock:(void (^)(JTGRover * _Nullable, NSError * _Nullable))block {
+- (void)fetchMissionManifestForRoverNamed:(NSString *)roverName withBlock:(void (^)(JTGRover * _Nullable, NSError * _Nullable))block {
+    NSURL *url = [JTGMarsRoverClient URLForInfoForRover:roverName];
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"Error: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+        NSLog(@"\n\n%@\n\n", response);
+        
+        if (!data) {
+            NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+        NSError *err = nil;
+        NSDictionary *topLevelDictionary = [NSJSONSerialization JSONObjectWithData:data options:2 error:&err];
+        
+        NSDictionary *roverDictionary = topLevelDictionary[@"photo_manifest"];
+        JTGRover *rover = [[JTGRover alloc] initWithDictionary:roverDictionary];
+        
+        block(rover, nil);
+    }] resume];
+}
+
+- (void)fetchPhotosFromRover:(JTGRover *)rover sol:(NSNumber *)sol withBlock:(void (^)(NSArray<UIImage *> * _Nullable, NSError * _Nullable))block {
     
+    NSURL *url = [JTGMarsRoverClient URLForPhotosFromRover:rover.name sol:sol];
     
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"Error: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+        NSLog(@"\n\n%@\n\n", response);
+        
+        if (!data) {
+            NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+        NSError *err = nil;
+        NSDictionary *topLevelDictionary = [NSJSONSerialization JSONObjectWithData:data options:2 error:&err];
+        NSArray *photosArray = topLevelDictionary[@"photos"];
+        NSMutableArray *photosToComplete = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *imageDictionary in photosArray) {
+            [photosToComplete addObject:imageDictionary[@"img_src"]];
+        }
+        
+        block(photosToComplete, nil);
+    }] resume];
 }
 
 @end

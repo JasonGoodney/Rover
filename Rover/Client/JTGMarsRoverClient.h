@@ -16,7 +16,7 @@
 - (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray<NSString *> * _Nullable roverNames, NSError * _Nullable error))block;
 
 // takes in a string and has a completion block that returns an instance of your rover model, and an error
-- (void) fetchMissionManifestForRoverNamed:(NSString *)name
+- (void) fetchMissionManifestForRoverNamed:(NSString *)roverName
                                  withBlock:(void(^)(JTGRover * _Nullable rover, NSError * _Nullable error ))block;
 
 // takes in an instance of your rover model, which sol you want photos for, and a completion block that returns an array of photos, and an error.
