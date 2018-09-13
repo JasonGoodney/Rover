@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "JTGRover.h"
+#import "JTGPhoto.h"
 
 @interface JTGMarsRoverClient : NSObject
 
@@ -21,10 +22,10 @@
 
 // takes in an instance of your rover model, which sol you want photos for, and a completion block that returns an array of photos, and an error.
 - (void) fetchPhotosFromRover:(JTGRover *)rover sol:(NSNumber *)sol
-                    withBlock:(void(^)(NSArray<UIImage *> * _Nullable image, NSError * _Nullable error ))block;
+                    withBlock:(void(^)(NSArray<JTGPhoto *> * _Nullable photos, NSError * _Nullable error ))block;
 
 // takes in an instance of your photo model, and has a completion block that returns imageData ( NSData, not Data )
-- (void) fetchImageDataForPhoto:(JTGRover *)rover
+- (void) fetchImageDataForPhoto:(JTGPhoto *)photo
                       withBlock:(void(^)(NSData * _Nullable data, NSError * _Nullable error))block;
 
 @end

@@ -19,15 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    JTGMarsRoverClient *client = [[JTGMarsRoverClient alloc] init];
-    
-    [client fetchMissionManifestForRoverNamed:@"Curiosity" withBlock:^(JTGRover * _Nullable rover, NSError * _Nullable error) {
-        NSLog(@"%@", rover);
-        [client fetchPhotosFromRover:rover sol:[NSNumber numberWithInteger:1000] withBlock:^(NSArray<UIImage *> * _Nullable image, NSError * _Nullable error) {
-            
-        }];
-    }];
-    
     return YES;
 }
 

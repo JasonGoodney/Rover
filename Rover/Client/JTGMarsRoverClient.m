@@ -48,7 +48,6 @@
     return components.URL;
 }
 
-// https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
 + (NSURL *) URLForPhotosFromRover:(NSString *)roverName sol:(NSNumber *)sol {
     NSURL *roverURL = [[[[self baseURL]
                          URLByAppendingPathComponent:@"rovers"]
@@ -65,15 +64,15 @@
 }
 
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> * _Nullable, NSError * _Nullable))block {
-    NSURL *url = [JTGMarsRoverClient URLForAllRovers];
-    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURL *roversURL = [JTGMarsRoverClient URLForAllRovers];
+    [[[NSURLSession sharedSession] dataTaskWithURL:roversURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"Error: %@ %@", error, error.localizedDescription);
             block(nil, error); return;
         }
         
-        NSLog(@"\n\n%@\n\n", response);
+//        NSLog(@"\n\n%@\n\n", response);
         
         if (!data) {
             NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
@@ -96,15 +95,15 @@
 }
 
 - (void)fetchMissionManifestForRoverNamed:(NSString *)roverName withBlock:(void (^)(JTGRover * _Nullable, NSError * _Nullable))block {
-    NSURL *url = [JTGMarsRoverClient URLForInfoForRover:roverName];
-    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURL *roverURL = [JTGMarsRoverClient URLForInfoForRover:roverName];
+    [[[NSURLSession sharedSession] dataTaskWithURL:roverURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"Error: %@ %@", error, error.localizedDescription);
             block(nil, error); return;
         }
         
-        NSLog(@"\n\n%@\n\n", response);
+//        NSLog(@"\n\n%@\n\n", response);
         
         if (!data) {
             NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
@@ -121,18 +120,18 @@
     }] resume];
 }
 
-- (void)fetchPhotosFromRover:(JTGRover *)rover sol:(NSNumber *)sol withBlock:(void (^)(NSArray<UIImage *> * _Nullable, NSError * _Nullable))block {
+- (void)fetchPhotosFromRover:(JTGRover *)rover sol:(NSNumber *)sol withBlock:(void (^)(NSArray<JTGPhoto *> * _Nullable, NSError * _Nullable))block {
     
-    NSURL *url = [JTGMarsRoverClient URLForPhotosFromRover:rover.name sol:sol];
+    NSURL *photosURL = [JTGMarsRoverClient URLForPhotosFromRover:rover.name sol:sol];
     
-    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[[NSURLSession sharedSession] dataTaskWithURL:photosURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"Error: %@ %@", error, error.localizedDescription);
             block(nil, error); return;
         }
         
-        NSLog(@"\n\n%@\n\n", response);
+//        NSLog(@"\n\n%@\n\n", response);
         
         if (!data) {
             NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
@@ -144,11 +143,34 @@
         NSArray *photosArray = topLevelDictionary[@"photos"];
         NSMutableArray *photosToComplete = [[NSMutableArray alloc] init];
         
-        for (NSDictionary *imageDictionary in photosArray) {
-            [photosToComplete addObject:imageDictionary[@"img_src"]];
+        for (NSDictionary *photoDictionary in photosArray) {
+            JTGPhoto *photo = [[JTGPhoto alloc] initWithDictionary:photoDictionary];
+            [photosToComplete addObject:photo];
         }
         
         block(photosToComplete, nil);
+    }] resume];
+}
+
+- (void)fetchImageDataForPhoto:(JTGPhoto *)photo withBlock:(void (^)(NSData * _Nullable, NSError * _Nullable))block {
+    
+    NSURL *imageURL = [NSURL URLWithString:photo.imageURLString];
+    
+    [[[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+//        NSLog(@"\n\n%@\n\n", response);
+        
+        if (!data) {
+            NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);
+            block(nil, error); return;
+        }
+        
+        block(data, nil);
+        
     }] resume];
 }
 
