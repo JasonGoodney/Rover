@@ -28,6 +28,11 @@
     _solLabel.text = [NSString stringWithFormat:@"Sol: %@", _photo.sol];
     _dateLabel.text = [NSString stringWithFormat:@"Date: %@", _photo.earthDateCaptured];
     
+}
+
+- (void)setPhoto:(JTGPhoto *)photo {
+    _photo = photo;
+    
     _client = [[JTGMarsRoverClient alloc] init];
     [_client fetchImageDataForPhoto:_photo withBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (error) {
@@ -35,24 +40,11 @@
         }
         UIImage *image = [UIImage imageWithData:data];
         
-        // FIXME: - JPEGDecompressSurface : Picture decode failed
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.photoImageView.image = [UIImage imageWithData:data];
-            
+            self.photoImageView.image = image;
         });
         
     }];
-    
-}
-
-- (void)setPhoto:(JTGPhoto *)photo {
-    
-    if (!photo) {
-        return;
-    }
-    
-    _photo = photo;
-    
 }
 
 @end
