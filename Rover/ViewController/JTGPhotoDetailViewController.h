@@ -15,4 +15,6 @@
 
 @property (nonatomic) JTGPhoto *photo;
 
+- (NSString *) formateDateFromDateString:(NSString *)dateString;
+
 @end
