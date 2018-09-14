@@ -31,14 +31,14 @@ static NSString * const reuseIdentifier = @"solCell";
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [[self rover].solDescriptions count];
+    return _rover.solDescriptions.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
 
-    JTGSolDescription *solDescription = [[self rover].solDescriptions objectAtIndex:indexPath.row];
+    JTGSolDescription *solDescription = [_rover.solDescriptions objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"Sol %@", solDescription.sol];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Photos", solDescription.numberOfPhotos];
@@ -55,9 +55,8 @@ static NSString * const reuseIdentifier = @"solCell";
         NSInteger index = [self.tableView indexPathForSelectedRow].row;
         
         destinationVC.rover = _rover;
-        destinationVC.sol = [NSNumber numberWithInteger:index]; //[[_rover solDescriptions] objectAtIndex:index];
+        destinationVC.solDescription = [_rover.solDescriptions objectAtIndex:index];
     }
 }
-
 
 @end

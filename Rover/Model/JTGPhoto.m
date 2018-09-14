@@ -33,7 +33,8 @@
         return nil;
     }
     
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         _identifier = identifier;
         _sol = sol;
         _cameraName = cameraName;

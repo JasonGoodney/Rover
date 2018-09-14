@@ -22,7 +22,8 @@
         return nil;
     }
     
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         _sol = sol;
         _numberOfPhotos = numberOfPhotos;
         _cameras = cameras;

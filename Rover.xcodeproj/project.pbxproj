@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D7A58498214AD32700323F09 /* JTGPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A58497214AD32700323F09 /* JTGPhotoCollectionViewCell.m */; };
+		D7A5849B214AF63900323F09 /* JTGPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A5849A214AF63900323F09 /* JTGPhotoDetailViewController.m */; };
+		D7A5849E214AF91A00323F09 /* JTGPhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A5849D214AF91A00323F09 /* JTGPhotoCache.m */; };
 		D7D705B0214954DC007C3C57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D705AF214954DC007C3C57 /* AppDelegate.m */; };
 		D7D705B6214954DC007C3C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B4214954DC007C3C57 /* Main.storyboard */; };
 		D7D705B8214954DD007C3C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D705B7214954DD007C3C57 /* Assets.xcassets */; };
@@ -26,6 +28,10 @@
 /* Begin PBXFileReference section */
 		D7A58496214AD32700323F09 /* JTGPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		D7A58497214AD32700323F09 /* JTGPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		D7A58499214AF63900323F09 /* JTGPhotoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGPhotoDetailViewController.h; sourceTree = "<group>"; };
+		D7A5849A214AF63900323F09 /* JTGPhotoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGPhotoDetailViewController.m; sourceTree = "<group>"; };
+		D7A5849C214AF91A00323F09 /* JTGPhotoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTGPhotoCache.h; sourceTree = "<group>"; };
+		D7A5849D214AF91A00323F09 /* JTGPhotoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTGPhotoCache.m; sourceTree = "<group>"; };
 		D7D705AB214954DC007C3C57 /* Rover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7D705AE214954DC007C3C57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7D705AF214954DC007C3C57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,7 +89,7 @@
 			children = (
 				D7D705CB214954FC007C3C57 /* UI */,
 				D7D705C6214954FC007C3C57 /* Model */,
-				D7D705CC214954FC007C3C57 /* Client */,
+				D7D705CC214954FC007C3C57 /* Networking */,
 				D7D705C4214954FC007C3C57 /* View */,
 				D7D705C5214954FC007C3C57 /* ViewController */,
 				D7D705CA214954FC007C3C57 /* Resources */,
@@ -109,6 +115,8 @@
 				D7D70643214A0A0F007C3C57 /* JTGSolsTableViewController.m */,
 				D7D70645214A0A68007C3C57 /* JTGPhotosCollectionViewController.h */,
 				D7D70646214A0A68007C3C57 /* JTGPhotosCollectionViewController.m */,
+				D7A58499214AF63900323F09 /* JTGPhotoDetailViewController.h */,
+				D7A5849A214AF63900323F09 /* JTGPhotoDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -148,13 +156,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D7D705CC214954FC007C3C57 /* Client */ = {
+		D7D705CC214954FC007C3C57 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				D7D7063C2149BE25007C3C57 /* JTGMarsRoverClient.h */,
 				D7D7063D2149BE25007C3C57 /* JTGMarsRoverClient.m */,
+				D7A5849C214AF91A00323F09 /* JTGPhotoCache.h */,
+				D7A5849D214AF91A00323F09 /* JTGPhotoCache.m */,
 			);
-			path = Client;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +248,9 @@
 				D7D70644214A0A0F007C3C57 /* JTGSolsTableViewController.m in Sources */,
 				D7D705BE214954DD007C3C57 /* main.m in Sources */,
 				D7D7063E2149BE25007C3C57 /* JTGMarsRoverClient.m in Sources */,
+				D7A5849E214AF91A00323F09 /* JTGPhotoCache.m in Sources */,
 				D7D705B0214954DC007C3C57 /* AppDelegate.m in Sources */,
+				D7A5849B214AF63900323F09 /* JTGPhotoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

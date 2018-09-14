@@ -52,14 +52,14 @@ static NSString * const reuseIdentifier = @"roverCell";
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_rovers count];
+    return _rovers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     JTGRover *rover = [_rovers objectAtIndex:indexPath.row];
-    NSString *roverName = [self.roverNames objectAtIndex:indexPath.row];
+    
     cell.textLabel.text = rover.name;
     
     return cell;

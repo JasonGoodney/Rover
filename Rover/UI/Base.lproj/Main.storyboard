@@ -113,7 +113,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="147" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-qI-ADI">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-qI-ADI">
                                             <rect key="frame" x="0.0" y="0.0" width="147" height="140"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="g2s-qI-ADI" secondAttribute="height" multiplier="21:20" id="ZPR-xk-3CW"/>
@@ -147,18 +147,63 @@
         <!--Photo Details-->
         <scene sceneID="8Pf-sM-AH0">
             <objects>
-                <viewController id="7ht-3H-V32" sceneMemberID="viewController">
+                <viewController id="7ht-3H-V32" customClass="JTGPhotoDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oIu-Oc-e1R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-wl-5aq">
+                                <rect key="frame" x="37" y="183" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZHD-wl-5aq" secondAttribute="height" multiplier="1:1" id="aiu-MP-7kt"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EHW-cD-p1L">
+                                <rect key="frame" x="37" y="499" width="300" height="81.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(sol)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j25-Zl-gsE">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(cam)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoZ-5i-W97">
+                                        <rect key="frame" x="0.0" y="30.5" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffj-l3-OrV">
+                                        <rect key="frame" x="0.0" y="61" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EHW-cD-p1L" firstAttribute="top" secondItem="ZHD-wl-5aq" secondAttribute="bottom" constant="16" id="5YX-ej-mej"/>
+                            <constraint firstItem="EHW-cD-p1L" firstAttribute="width" secondItem="ZHD-wl-5aq" secondAttribute="width" id="79k-sP-Pox"/>
+                            <constraint firstItem="ZHD-wl-5aq" firstAttribute="centerX" secondItem="oIu-Oc-e1R" secondAttribute="centerX" id="CSU-Lm-cT0"/>
+                            <constraint firstItem="ZHD-wl-5aq" firstAttribute="centerY" secondItem="oIu-Oc-e1R" secondAttribute="centerY" id="Dha-nI-gku"/>
+                            <constraint firstItem="ZHD-wl-5aq" firstAttribute="top" secondItem="W6p-Eb-CIl" secondAttribute="top" constant="119" id="TZ5-sA-xBn"/>
+                            <constraint firstItem="EHW-cD-p1L" firstAttribute="centerX" secondItem="oIu-Oc-e1R" secondAttribute="centerX" id="ldf-Rr-zPB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="W6p-Eb-CIl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Details" id="pXE-UA-Pd6"/>
+                    <connections>
+                        <outlet property="cameraLabel" destination="zoZ-5i-W97" id="tLI-d5-eP0"/>
+                        <outlet property="dateLabel" destination="ffj-l3-OrV" id="hyj-VX-zVL"/>
+                        <outlet property="photoImageView" destination="ZHD-wl-5aq" id="Fgt-5Z-rdq"/>
+                        <outlet property="solLabel" destination="j25-Zl-gsE" id="tsE-JT-Srd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHu-Ab-mCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3519" y="-834"/>
+            <point key="canvasLocation" x="3517.5999999999999" y="-834.33283358320841"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z0I-1m-t3V">
@@ -177,4 +222,7 @@
             <point key="canvasLocation" x="2" y="-834"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MarsPlaceholder" width="225" height="225"/>
+    </resources>
 </document>

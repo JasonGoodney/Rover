@@ -12,6 +12,8 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
+    
+    _photoImageView.image = [UIImage imageNamed:@"MarsPlaceholder"];
 }
 
 @end

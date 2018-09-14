@@ -156,6 +156,12 @@
 
 - (void)fetchImageDataForPhoto:(JTGPhoto *)photo withBlock:(void (^)(NSData * _Nullable, NSError * _Nullable))block {
     
+    if (!photo) {
+        NSLog(@"no photo object for image data fetch");
+        block(nil, nil);
+        return;
+    }
+    
     NSURL *imageURL = [NSURL URLWithString:photo.imageURLString];
     
     [[[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -164,7 +170,7 @@
             block(nil, error); return;
         }
         
-//        NSLog(@"\n\n%@\n\n", response);
+        NSLog(@"\n\n%@\n\n", response);
         
         if (!data) {
             NSLog(@"NO DATA: %@ %@", error, error.localizedDescription);

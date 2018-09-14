@@ -30,7 +30,8 @@
         return nil;
     }
     
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         _name = name;
         _landingDate = landingDate;
         _launchDate = launchDate;
